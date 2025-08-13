@@ -1,0 +1,203 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Earthquake XML API"
+  },
+  "host": "earthquake.usgs.gov",
+  "basePath": "/earthquakes/feed/v1.0",
+  "schemes": ["https"],
+  "paths": {
+    "/summary/all_day.quakeml": {
+      "get": {
+        "tags": ["xml_test"],
+        "operationId": "xml_test",
+        "produces": ["application/xml"],
+        "consumes": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/xml_test"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "xml_test": {
+      "properties": {
+        "q:quakeml": {
+          "$ref": "#/definitions/xml_test##q:quakeml"
+        }
+      }
+    },
+    "xml_test##q:quakeml": {
+      "properties": {
+        "xmlns": { "type": "string" },
+        "xmlns:anss": { "type": "string" },
+        "xmlns:catalog": { "type": "string" },
+        "xmlns:q": { "type": "string" },
+        "eventParameters": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters"
+        }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters": {
+      "properties": {
+        "publicID": { "type": "string" },
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event"
+          }
+        },
+        "creationInfo": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##creationInfo"
+        }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##creationInfo": {
+      "properties": {
+        "creationTime": { "type": "string" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event": {
+      "properties": {
+        "catalog:datasource": { "type": "string" },
+        "catalog:eventsource": { "type": "string" },
+        "catalog:eventid": { "type": "number" },
+        "publicID": { "type": "string" },
+        "description": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##description"
+        },
+        "origin": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin"
+        },
+        "magnitude": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##magnitude"
+        },
+        "preferredOriginID": { "type": "string" },
+        "preferredMagnitudeID": { "type": "string" },
+        "type": { "type": "string" },
+        "creationInfo": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##creationInfo"
+        }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##description": {
+      "properties": {
+        "type": { "type": "string" },
+        "text": { "type": "string" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin": {
+      "properties": {
+        "catalog:datasource": { "type": "string" },
+        "catalog:dataid": { "type": "string" },
+        "catalog:eventsource": { "type": "string" },
+        "catalog:eventid": { "type": "number", "format": "int32" },
+        "publicID": { "type": "string" },
+        "time": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##time"
+        },
+        "longitude": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##longitude"
+        },
+        "latitude": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##latitude"
+        },
+        "depth": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##depth"
+        },
+        "originUncertainty": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##originUncertainty"
+        },
+        "quality": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##quality"
+        },
+        "evaluationMode": { "type": "string" },
+        "creationInfo": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##origin##creationInfo"
+        }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##time": {
+      "properties": { "value": { "type": "string" } }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##longitude": {
+      "properties": { "value": { "type": "number", "format": "double" } }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##latitude": {
+      "properties": { "value": { "type": "number", "format": "double" } }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##depth": {
+      "properties": {
+        "value": { "type": "number", "format": "int32" },
+        "uncertainty": { "type": "number", "format": "int32" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##originUncertainty": {
+      "properties": {
+        "horizontalUncertainty": { "type": "number", "format": "int32" },
+        "preferredDescription": { "type": "string" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##quality": {
+      "properties": {
+        "usedPhaseCount": { "type": "number", "format": "int32" },
+        "usedStationCount": { "type": "number", "format": "int32" },
+        "standardError": { "type": "number", "format": "double" },
+        "azimuthalGap": { "type": "number", "format": "int32" },
+        "minimumDistance": { "type": "number", "format": "double" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##origin##creationInfo": {
+      "properties": {
+        "agencyID": { "type": "string" },
+        "creationTime": { "type": "string" },
+        "version": { "type": "number", "format": "int32" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##magnitude": {
+      "properties": {
+        "catalog:datasource": { "type": "string" },
+        "catalog:dataid": { "type": "string" },
+        "catalog:eventsource": { "type": "string" },
+        "catalog:eventid": { "type": "number", "format": "int32" },
+        "publicID": { "type": "string" },
+        "mag": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##magnitude##mag"
+        },
+        "type": { "type": "string" },
+        "stationCount": { "type": "number", "format": "int32" },
+        "originID": { "type": "string" },
+        "evaluationMode": { "type": "string" },
+        "creationInfo": {
+          "$ref": "#/definitions/xml_test##q:quakeml##eventParameters##event##magnitude##creationInfo"
+        }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##magnitude##mag": {
+      "properties": {
+        "value": { "type": "number", "format": "double" },
+        "uncertainty": { "type": "number", "format": "double" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##magnitude##creationInfo": {
+      "properties": {
+        "agencyID": { "type": "string" },
+        "creationTime": { "type": "string" }
+      }
+    },
+    "xml_test##q:quakeml##eventParameters##event##creationInfo": {
+      "properties": {
+        "agencyID": { "type": "string" },
+        "creationTime": { "type": "string" },
+        "version": { "type": "number", "format": "int32" }
+      }
+    }
+  }
+}
