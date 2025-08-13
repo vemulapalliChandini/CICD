@@ -1,0 +1,29 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : null,
+    "version" : "1.0.0",
+    "title" : null,
+    "termsOfService" : null,
+    "contact" : null,
+    "license" : null
+  },
+  "host" : "earthquake.usgs.gov",
+  "basePath" : "/earthquakes/feed/v1.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/summary/all_day.quakeml" : {
+      "get" : {
+        "tags" : [ "test_xml_2" ],
+        "summary" : null,
+        "description" : null,
+        "operationId" : "test_xml_2",
+        "produces" : [ "application/xml" ],
+        "consumes" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : { }
+      }
+    }
+  },
+  "definitions" : { }
+}
